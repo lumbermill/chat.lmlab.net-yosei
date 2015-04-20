@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chats Ranking TOP10</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>順位</th>
+      <th>User</th>
+      <th>投稿数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chats.each_with_index do |chat,i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= chat.values[0] %></td>
+        <td><%= chat.values[1] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chat', new_chat_path, class: "btn btn-primary" %>
