@@ -8,6 +8,11 @@ class ChatsController < ApplicationController
     @chats = Chat.all.order(created_at: :desc,id: :desc)
   end
 
+  def ranking
+    sql = "SELECT user,count(1) AS ranking FROM chats GROUP BY user ORDER BY ranking DESC LIMIT 10"
+    @chats = ActiveRecord::Base.connection.select_all(sql)
+  end
+
   # GET /chats/1
   # GET /chats/1.json
   def show
